@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Red theme for ChatGPT",
+  "version": "1.0",
+  "description": "A simple extension to change the color of a specific div on a website.",
+  "permissions": ["activeTab", "scripting","storage"],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "72": "icons/icon-72.png",
+    "96": "icons/icon-96.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "72": "icons/icon-72.png",
+      "96": "icons/icon-96.png"
+    }
+  },
+  "background": {
+    "service_worker": "background_worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["inject.js"]
+    }
+  ],
+   "web_accessible_resources": [
+    {
+      "resources": ["icons/icon-96.png","wallpaper.jpg"],
+      "matches": ["https://chatgpt.com/*"]
+    }
+  ]
+}
